@@ -4,3 +4,5 @@ numpy
 onnxruntime
 opencv-python
 uvicorn[standard]
+gunicorn
+
