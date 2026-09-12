@@ -8,10 +8,15 @@ except ImportError:
 
 
 def create_face_analyzer():
-    # Load insightface model on CPU
-    analyzer = FaceAnalysis(name=MODEL_NAME, providers=["CPUExecutionProvider"])
+    # Load insightface model on CPU (only load detection and recognition to save 300MB RAM)
+    analyzer = FaceAnalysis(
+        name=MODEL_NAME,
+        allowed_modules=["detection", "recognition"],
+        providers=["CPUExecutionProvider"],
+    )
     analyzer.prepare(ctx_id=-1, det_size=DETECTION_SIZE)
     return analyzer
+
 
 
 def normalize_embedding(embedding):
