@@ -1,0 +1,10 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - FRONTEND_ORIGINS=*
+    volumes:
+      - ./data/embeddings:/app/data/embeddings
