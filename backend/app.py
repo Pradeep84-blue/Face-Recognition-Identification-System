@@ -1,11 +1,13 @@
+import base64
 import os
 import cv2
 import numpy as np
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from src.config import MIN_FACE_SIZE, MODEL_NAME, THRESHOLD
-from src.core import create_face_analyzer, find_best_match, load_embeddings
+from src.config import EMBEDDING_DIR, MIN_FACE_SIZE, MODEL_NAME, THRESHOLD
+from src.core import create_face_analyzer, find_best_match, load_embeddings, normalize_embedding
+
 
 raw_origins = os.getenv("FRONTEND_ORIGINS", "*")
 if raw_origins == "*":
@@ -111,10 +113,6 @@ async def register_person(request: Request):
     if not images or not isinstance(images, list):
         raise HTTPException(status_code=400, detail="Please provide at least one face image sample.")
 
-    import base64
-    from src.config import EMBEDDING_DIR
-    from src.core import normalize_embedding
-
     EMBEDDING_DIR.mkdir(parents=True, exist_ok=True)
     embeddings = []
 
@@ -152,7 +150,6 @@ async def register_person(request: Request):
 @app.delete("/people/{name}")
 def delete_person(name: str):
     # Deletes an enrolled identity
-    from src.config import EMBEDDING_DIR
     file_path = EMBEDDING_DIR / f"{name}.npy"
     if file_path.exists():
         file_path.unlink()
