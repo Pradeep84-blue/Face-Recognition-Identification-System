@@ -7,7 +7,7 @@ The system enrolls face embeddings via webcam, stores 512-dimensional facial fea
 ---
 
 ## 📌 Features
-- **Face Detection & Embeddings:** Uses pretrained InsightFace (`buffalo_l`) running locally on CPU.
+- **Face Detection & Embeddings:** Uses pretrained InsightFace (ArcFace / RetinaFace) running locally on CPU.
 - **Webcam Enrollment:** Registers new users by capturing 10 face sample embeddings (`.npy` files).
 - **Cosine Similarity Matching:** Fast vector dot-product matching against saved identities.
 - **Unknown Face Rejection:** Rejects unauthorized/unknown individuals if similarity score is below `0.45`.
