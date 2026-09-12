@@ -111,7 +111,7 @@ Open **http://localhost:5173** in your browser and click **Start recognition**.
 
 ---
 
-## 🧠 How It Works (For Viva & Presentation)
+## 🧠 System Architecture & Pipeline
 
 1. **Face Detection (RetinaFace):**
    Locates face bounding boxes \((x_1, y_1, x_2, y_2)\) from each webcam frame.
@@ -216,17 +216,6 @@ During testing, the following failure modes and limitations were identified:
 - **No Cloud API Charges:** Runs locally on CPU without requiring paid proprietary APIs (like AWS Rekognition or Azure Face API).
 - **Zero Hosting Cost:** Deployment-ready on free-tier platforms (Vercel for frontend, Render/Railway free-tier for backend).
 
----
 
-## ❓ Frequently Asked Viva / Interview Questions
-
-* **Q: Why use embeddings instead of pixel matching?**
-  * *A:* Embeddings extract high-level facial representations that are invariant to lighting changes, minor expressions, and slight angles.
-* **Q: What is Cosine Similarity?**
-  * *A:* It measures the cosine of the angle between two vectors in 512-D space. If two face vectors point in almost the same direction, the cosine value is close to 1.0.
-* **Q: Why is threshold set to 0.45?**
-  * *A:* 0.45 balances false positives (falsely accepting strangers) and false negatives (failing to recognize registered users).
-* **Q: Why are frontend and backend on different ports?**
-  * *A:* Vite dev server runs Node.js on port `5173` to compile React UI, while FastAPI runs Python on port `8000` to execute the ML models. They communicate over HTTP REST API (`/recognize`).
 
 
