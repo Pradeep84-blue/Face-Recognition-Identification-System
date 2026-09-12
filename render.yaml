@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: face-recognition-api
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
+    region: singapore
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: FRONTEND_ORIGINS
+        value: "*"
+      - key: PYTHONUNBUFFERED
+        value: "1"
