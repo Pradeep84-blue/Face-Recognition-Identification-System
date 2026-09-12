@@ -190,7 +190,7 @@ During testing, the following failure modes and limitations were identified:
    - *Mitigation:* Ensure balanced front-facing lighting and minimum face bounding box size of $80\times 80$ pixels.
 
 3. **Heavy Facial Occlusions:**
-   - *Issue:* Wearing thick dark sunglasses or N95 masks covers major biometric regions, preventing accurate ArcFace feature extraction.
+   - *Issue:* Wearing thick dark sunglasses or masks covers major biometric regions, preventing accurate ArcFace feature extraction.
 
 4. **Identical Twins / Close Doppelgängers:**
    - *Issue:* ArcFace measures deep geometric and textural features, which may yield higher-than-normal similarity scores between identical twins.
